@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
-import heroMaleImg from '../assets/hero_male_tech.jpg';
+import heroMaleImg from '../assets/hero_male_tech.webp';
 
 export default function Hero() {
   const handleScrollTo = (id) => {
@@ -23,7 +23,7 @@ export default function Hero() {
               Comfort You Can Count On.
             </h1>
 
-            {/* Added One Line Subheadline */}
+            {/* Subheadline Line */}
             <p className="text-hvac-blue font-bold text-lg sm:text-xl mb-4">
               Precision Heating, Cooling & Commercial Refrigeration Solutions.
             </p>
@@ -70,7 +70,7 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: Perfectly Proportioned Balanced Image Card */}
+          {/* Right Column: Balanced WebP Image Card */}
           <div className="lg:col-span-6 flex items-center justify-center">
             <div className="w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200/80 group aspect-[16/11]">
               <img

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
-import aboutImg from '../assets/about_technician.jpg';
+import aboutImg from '../assets/about_technician.webp';
 
 export default function About() {
   const handleScrollToContact = (e) => {

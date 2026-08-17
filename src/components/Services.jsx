@@ -2,12 +2,12 @@ import React from 'react';
 import { Flame, Snowflake, Fan, Refrigerator, Wind, Settings } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 
-import heatingImg from '../assets/service_heating.jpg';
-import acImg from '../assets/service_ac.jpg';
-import hvacImg from '../assets/service_hvac.jpg';
-import refrigImg from '../assets/commercial_refrig.jpg';
-import ventilationImg from '../assets/about_technician.jpg';
-import maintenanceImg from '../assets/residential_hvac.jpg';
+import heatingImg from '../assets/service_heating.webp';
+import acImg from '../assets/service_ac.webp';
+import hvacImg from '../assets/service_hvac.webp';
+import refrigImg from '../assets/commercial_refrig.webp';
+import ventilationImg from '../assets/about_technician.webp';
+import maintenanceImg from '../assets/residential_hvac.webp';
 
 export default function Services() {
   const handleScrollToContact = () => {

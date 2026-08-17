@@ -1,7 +1,7 @@
 import React from 'react';
 import { Home, Building2, CheckCircle2, ArrowRight } from 'lucide-react';
-import resImg from '../assets/residential_hvac.jpg';
-import commImg from '../assets/commercial_refrig.jpg';
+import resImg from '../assets/residential_hvac.webp';
+import commImg from '../assets/commercial_refrig.webp';
 
 export default function ResidentialCommercial() {
   const handleScrollToContact = () => {
