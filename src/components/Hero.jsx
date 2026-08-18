@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
-import heroMaleImg from '/hero_male_tech.webp';
+import heroMaleImg from '/hero_tech_clean.webp';
 
 export default function Hero() {
   const handleScrollTo = (id) => {
