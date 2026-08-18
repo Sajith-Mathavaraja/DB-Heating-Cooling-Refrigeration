@@ -14,9 +14,6 @@ export default function ServiceCard({ number, title, description, icon: Icon, im
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
-            <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-navy-900 border border-gray-200">
-              {number}
-            </div>
           </div>
         )}
 
