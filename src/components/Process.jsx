@@ -35,7 +35,7 @@ export default function Process() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-hvac-blue-soft text-hvac-blue text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-hvac-blue text-white text-xs font-bold uppercase tracking-wider mb-4">
             HOW WE WORK
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight leading-tight">
@@ -61,7 +61,7 @@ export default function Process() {
                     <div className="w-14 h-14 rounded-xl bg-hvac-blue-soft text-hvac-blue flex items-center justify-center border border-hvac-blue/20">
                       <Icon className="w-7 h-7" />
                     </div>
-                    <span className="text-3xl font-black text-hvac-blue/25">
+                    <span className="text-3xl font-black text-navy-900/20">
                       {step.number}
                     </span>
                   </div>

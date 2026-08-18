@@ -31,6 +31,8 @@ export default function About() {
                 alt="Expert DB HVAC technician checking heating and cooling system equipment"
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
                 loading="lazy"
+                width={800}
+                height={600}
               />
             </div>
             {/* Background accent element */}
@@ -41,7 +43,7 @@ export default function About() {
           {/* Right Column: Copy & Checklist */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-accent-light text-hvac-blue text-xs font-bold uppercase tracking-wider mb-4 w-max">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-hvac-blue text-white text-xs font-bold uppercase tracking-wider mb-4 w-max">
               ABOUT DB
             </div>
 

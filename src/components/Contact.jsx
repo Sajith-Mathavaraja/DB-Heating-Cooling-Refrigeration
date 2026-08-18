@@ -35,7 +35,7 @@ export default function Contact({ onOpenTerms, onOpenPrivacy }) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-hvac-blue-soft text-hvac-blue text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-hvac-blue text-white text-xs font-bold uppercase tracking-wider mb-4">
             GET IN TOUCH
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight leading-tight mb-4">
@@ -134,7 +134,7 @@ export default function Contact({ onOpenTerms, onOpenPrivacy }) {
                 <AlertCircle className="w-5 h-5" />
                 Fast Service Response
               </h4>
-              <p className="text-xs sm:text-sm text-mutedText leading-relaxed">
+              <p className="text-xs sm:text-sm text-navy-900 leading-relaxed">
                 Call <strong className="text-navy-900">518-520-4822</strong> or submit the request form and our team will get back to you promptly.
               </p>
             </div>

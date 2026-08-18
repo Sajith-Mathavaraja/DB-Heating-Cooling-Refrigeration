@@ -30,7 +30,7 @@ export default function Logo({ size = 'md', className = '' }) {
         <span className={`text-navy-900 font-extrabold ${titleSize} tracking-tight leading-tight group-hover:text-hvac-blue transition-colors`}>
           DB Heating, Cooling
         </span>
-        <span className={`text-hvac-blue ${subSize} font-bold tracking-wider uppercase`}>
+        <span className={`text-navy-900 ${subSize} font-bold tracking-wider uppercase`}>
           & Refrigeration
         </span>
       </div>
