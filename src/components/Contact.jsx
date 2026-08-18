@@ -6,20 +6,31 @@ export default function Contact({ onOpenTerms, onOpenPrivacy }) {
   const scriptLoaded = useRef(false);
 
   useEffect(() => {
-    // Defer KDLead embed script until contact section is visible (eliminates forced reflow on load)
+    // Defer KDLead embed until contact section is truly visible
+    // requestIdleCallback pushes script injection to an idle browser slot
+    // eliminating any contribution to forced reflow on the critical render path
+    const loadKDLead = () => {
+      if (scriptLoaded.current) return;
+      scriptLoaded.current = true;
+      const script = document.createElement('script');
+      script.src = 'https://link.kdlead.com/js/form_embed.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !scriptLoaded.current) {
-          scriptLoaded.current = true;
-          const script = document.createElement('script');
-          script.src = 'https://link.kdlead.com/js/form_embed.js';
-          script.async = true;
-          script.defer = true;
-          document.body.appendChild(script);
+        if (entry.isIntersecting) {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadKDLead, { timeout: 2000 });
+          } else {
+            setTimeout(loadKDLead, 300);
+          }
           observer.disconnect();
         }
       },
-      { rootMargin: '200px 0px', threshold: 0 }
+      { rootMargin: '0px', threshold: 0.1 }
     );
 
     if (sectionRef.current) {
