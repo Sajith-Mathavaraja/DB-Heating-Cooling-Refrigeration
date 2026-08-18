@@ -17,24 +17,47 @@ export default function Header() {
   ];
 
   useEffect(() => {
+    let ticking = false;
+
+    // Passive, rAF-throttled scroll handler for header styling (zero forced layout read)
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-
-      // Scroll Spy
-      const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
-      const scrollPosition = window.scrollY + 100;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section.offsetTop <= scrollPosition) {
-          setActiveSection(navLinks[i].id);
-          break;
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Zero-Reflow IntersectionObserver for high-performance Scroll Spy
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    navLinks.forEach((link) => {
+      const section = document.getElementById(link.id);
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const handleNavClick = (e, href) => {
