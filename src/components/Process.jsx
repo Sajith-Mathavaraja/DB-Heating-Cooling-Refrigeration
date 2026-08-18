@@ -61,7 +61,7 @@ export default function Process() {
                     <div className="w-14 h-14 rounded-xl bg-hvac-blue-soft text-hvac-blue flex items-center justify-center border border-hvac-blue/20">
                       <Icon className="w-7 h-7" />
                     </div>
-                    <span className="text-3xl font-black text-navy-900/20">
+                    <span className="text-3xl font-black text-navy-900/20" aria-hidden="true">
                       {step.number}
                     </span>
                   </div>
