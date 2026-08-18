@@ -45,14 +45,36 @@ export default function Header() {
       threshold: 0,
     });
 
-    navLinks.forEach((link) => {
-      const section = document.getElementById(link.id);
-      if (section) spyObserver.observe(section);
-    });
+    const observed = new Set();
+
+    // Register any section already in the DOM
+    const observeAvailable = () => {
+      navLinks.forEach((link) => {
+        if (!observed.has(link.id)) {
+          const section = document.getElementById(link.id);
+          if (section) {
+            spyObserver.observe(section);
+            observed.add(link.id);
+          }
+        }
+      });
+      // Disconnect MutationObserver once all sections are found
+      if (observed.size === navLinks.length) {
+        mutationObserver.disconnect();
+      }
+    };
+
+    // Watch for lazy-loaded sections being added to the DOM
+    const mutationObserver = new MutationObserver(observeAvailable);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Run immediately for sections already present (hero is eager)
+    observeAvailable();
 
     return () => {
       if (headerObserver) headerObserver.disconnect();
       spyObserver.disconnect();
+      mutationObserver.disconnect();
     };
   }, []);
 
