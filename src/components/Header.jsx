@@ -69,8 +69,8 @@ export default function Header() {
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-all duration-300">
       {/* Floating Pill Capsule Bar */}
-      <div className={`bg-hvac-blue-soft/90 backdrop-blur-md border border-hvac-blue/20 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-xl transition-all duration-300 flex items-center justify-between ${
-        isScrolled ? 'shadow-2xl bg-white/95 border-gray-200' : ''
+      <div className={`bg-white/95 backdrop-blur-md border border-gray-200 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-xl transition-all duration-300 flex items-center justify-between ${
+        isScrolled ? 'shadow-2xl' : ''
       }`}>
         
         {/* Logo */}
@@ -94,8 +94,8 @@ export default function Header() {
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`px-3.5 py-1.5 text-sm font-semibold rounded-full transition-all duration-200 relative ${
                   isActive
-                    ? 'text-hvac-blue font-bold'
-                    : 'text-gray-700 hover:text-hvac-blue'
+                    ? 'text-navy-900 font-bold'
+                    : 'text-gray-700 hover:text-navy-900'
                 }`}
               >
                 {link.name}
@@ -155,7 +155,7 @@ export default function Header() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-4 py-2.5 rounded-xl text-base font-medium transition-colors ${
                     isActive
-                      ? 'text-hvac-blue font-bold bg-hvac-blue-soft'
+                      ? 'text-navy-900 font-bold bg-gray-100'
                       : 'text-gray-700 hover:text-navy-900 hover:bg-gray-100'
                   }`}
                 >

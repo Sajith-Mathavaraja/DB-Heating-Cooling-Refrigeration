@@ -130,7 +130,7 @@ export default function Contact({ onOpenTerms, onOpenPrivacy }) {
 
             {/* Fast Response Note Box */}
             <div className="p-6 rounded-2xl bg-hvac-blue-soft border border-hvac-blue/20 text-navy-900">
-              <h4 className="font-bold text-base mb-1 flex items-center gap-2 text-hvac-blue">
+              <h4 className="font-bold text-base mb-1 flex items-center gap-2 text-navy-900">
                 <AlertCircle className="w-5 h-5" />
                 Fast Service Response
               </h4>
