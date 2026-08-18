@@ -5,16 +5,23 @@ export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 400) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+    // Observe #about section: when #about leaves viewport going down, show scroll-to-top button
+    const target = document.getElementById('about');
+    let observer;
 
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    if (target) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVisible(!entry.isIntersecting);
+        },
+        { rootMargin: '-100px 0px 0px 0px', threshold: 0 }
+      );
+      observer.observe(target);
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   const scrollToTop = () => {

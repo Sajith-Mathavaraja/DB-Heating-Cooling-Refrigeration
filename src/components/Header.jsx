@@ -17,23 +17,22 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    let ticking = false;
+    // Zero-Reflow Sentinel Observer for Header Background Style
+    const sentinel = document.getElementById('hero');
+    let headerObserver;
 
-    // Passive, rAF-throttled scroll handler for header styling (zero forced layout read)
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    if (sentinel) {
+      headerObserver = new IntersectionObserver(
+        ([entry]) => {
+          setIsScrolled(!entry.isIntersecting);
+        },
+        { rootMargin: '-60px 0px 0px 0px', threshold: 0 }
+      );
+      headerObserver.observe(sentinel);
+    }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Zero-Reflow IntersectionObserver for high-performance Scroll Spy
-    const observerCallback = (entries) => {
+    // Zero-Reflow Observer for Navigation Scroll Spy
+    const spyCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -41,22 +40,19 @@ export default function Header() {
       });
     };
 
-    const observerOptions = {
-      root: null,
+    const spyObserver = new IntersectionObserver(spyCallback, {
       rootMargin: '-20% 0px -60% 0px',
       threshold: 0,
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    });
 
     navLinks.forEach((link) => {
       const section = document.getElementById(link.id);
-      if (section) observer.observe(section);
+      if (section) spyObserver.observe(section);
     });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
+      if (headerObserver) headerObserver.disconnect();
+      spyObserver.disconnect();
     };
   }, []);
 
