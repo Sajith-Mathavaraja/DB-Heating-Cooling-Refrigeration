@@ -20,10 +20,10 @@
     <meta property="og:title" content="DB Heating, Cooling & Refrigeration | Greenville, NY" />
     <meta property="og:description" content="Professional heating, cooling, HVAC and refrigeration solutions for residential and commercial customers. Call 518-520-4822." />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts: Non-blocking async load to eliminate render-blocking -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"></noscript>
 
     <!-- LocalBusiness Structured Data JSON-LD -->
     <script type="application/ld+json">

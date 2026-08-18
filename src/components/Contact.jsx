@@ -1,23 +1,36 @@
-import React, { useEffect } from 'react';
-import { Phone, Mail, MapPin, Clock, AlertCircle } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Phone, MapPin, Clock, AlertCircle } from 'lucide-react';
 
-export default function Contact() {
+export default function Contact({ onOpenTerms, onOpenPrivacy }) {
+  const sectionRef = useRef(null);
+  const scriptLoaded = useRef(false);
+
   useEffect(() => {
-    // Dynamically inject the form_embed.js script
-    const script = document.createElement('script');
-    script.src = 'https://link.kdlead.com/js/form_embed.js';
-    script.async = true;
-    document.body.appendChild(script);
+    // Defer KDLead embed script until contact section is visible (eliminates forced reflow on load)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !scriptLoaded.current) {
+          scriptLoaded.current = true;
+          const script = document.createElement('script');
+          script.src = 'https://link.kdlead.com/js/form_embed.js';
+          script.async = true;
+          script.defer = true;
+          document.body.appendChild(script);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px 0px', threshold: 0 }
+    );
 
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-white text-darkText relative">
+    <section id="contact" ref={sectionRef} className="py-20 lg:py-28 bg-white text-darkText relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -53,6 +66,7 @@ export default function Contact() {
               data-layout-iframe-id="inline-ElnIwJ3u2zPpoqrxVjkt"
               data-form-id="ElnIwJ3u2zPpoqrxVjkt"
               title="DB Heating,Cooling & Refrigeration"
+              loading="lazy"
             />
           </div>
 
