@@ -99,7 +99,7 @@ export default function Header() {
         <a 
           href="#hero" 
           onClick={(e) => handleNavClick(e, '#hero')}
-          className="focus:outline-none rounded-full"
+          className="focus:outline-none rounded-full ml-2 sm:ml-4"
           aria-label="DB Heating, Cooling & Refrigeration Home"
         >
           <Logo size="sm" />
