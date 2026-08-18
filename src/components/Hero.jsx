@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
-import heroMaleImg from '../assets/hero_male_tech.webp';
+import heroMaleImg from '/hero_male_tech.webp';
 
 export default function Hero() {
   const handleScrollTo = (id) => {
@@ -70,7 +70,7 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: Balanced WebP Image Card */}
+          {/* Right Column: Preloaded LCP WebP Image Card */}
           <div className="lg:col-span-6 flex items-center justify-center">
             <div className="w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200/80 group aspect-[16/11]">
               <img
@@ -79,6 +79,8 @@ export default function Hero() {
                 className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
                 loading="eager"
                 fetchPriority="high"
+                width="1280"
+                height="880"
               />
             </div>
           </div>
